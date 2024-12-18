@@ -180,6 +180,7 @@ class CalculatorApp(ft.Container):
             )
             self.reset()
         elif action == "backspace":
+<<<<<<< Updated upstream
             self.result.value = self.result.value[:-1]
             if self.result.value == "":
                 self.result.value = "0"
@@ -189,6 +190,10 @@ class CalculatorApp(ft.Container):
             self.result.value = str(value)
         else:
             raise ValueError("Invalid action")
+=======
+            if self.result.value == "":
+                self.result.value = "0"
+>>>>>>> Stashed changes
 
     def format_number(self, num):
         if num % 1 == 0:
