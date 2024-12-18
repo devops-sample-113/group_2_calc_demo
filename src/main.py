@@ -106,6 +106,13 @@ class CalculatorApp(ft.Container):
                             text="=", button_clicked=self.button_clicked, action="calculate"),
                     ]
                 ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+                        ActionButton(
+                            text="|x|", button_clicked=self.button_clicked, action="absolute"),
+                    ]
+                ),
             ]
         )
         return ui
@@ -176,6 +183,10 @@ class CalculatorApp(ft.Container):
             self.result.value = self.result.value[:-1]
             if self.result.value == "":
                 self.result.value = "0"
+        elif action == "absolute":
+            value = int(self.result.value)
+            value = abs(value)
+            self.result.value = str(value)
         else:
             raise ValueError("Invalid action")
 
