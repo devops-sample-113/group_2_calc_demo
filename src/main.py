@@ -1,4 +1,5 @@
 import flet as ft
+import math
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
 
@@ -110,7 +111,29 @@ class CalculatorApp(ft.Container):
                     expand=True,
                     controls=[
                         ActionButton(
-                            text="|x|", button_clicked=self.button_clicked, action="absolute"),
+                            text="|x|", button_clicked=self.button_clicked, action="absolute")
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+                        ActionButton(
+                            text="sin", button_clicked=self.button_clicked, action="sin"),
+                        ActionButton(
+                            text="cos", button_clicked=self.button_clicked, action="cos"),
+                            ActionButton(
+                            text="tan", button_clicked=self.button_clicked, action="tan")
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+                        ActionButton(
+                            text="cot", button_clicked=self.button_clicked, action="cot"),
+                        ActionButton(
+                            text="sec", button_clicked=self.button_clicked, action="sec"),
+                        ActionButton(
+                            text="csc", button_clicked=self.button_clicked, action="csc")
                     ]
                 ),
             ]
@@ -187,6 +210,22 @@ class CalculatorApp(ft.Container):
         elif action == "absolute":
             value = int(self.result.value)
             value = abs(value)
+            self.result.value = str(value)
+        elif action == "sin":
+            value = float(self.result.value)
+            value = math.sin(value)
+            self.result.value = str(value)
+        elif action == "cos":
+            value = float(self.result.value)
+            value = math.cos(value)
+            self.result.value = str(value)
+        elif action == "tan":
+            value = float(self.result.value)
+            value = math.tan(value)
+            self.result.value = str(value)
+        elif action == "cot":
+            value = float(self.result.value)
+            value = 1 / math.tan(value)
             self.result.value = str(value)
         else:
             raise ValueError("Invalid action")
