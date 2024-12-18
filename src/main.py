@@ -1,4 +1,5 @@
 import flet as ft
+import math
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
 
@@ -111,6 +112,10 @@ class CalculatorApp(ft.Container):
                     controls=[
                         ActionButton(
                             text="|x|", button_clicked=self.button_clicked, action="absolute"),
+                        ActionButton(
+                            text="sin", button_clicked=self.button_clicked, action="sin"),
+                        ActionButton(
+                            text="cos", button_clicked=self.button_clicked, action="cos")
                     ]
                 ),
             ]
@@ -186,6 +191,14 @@ class CalculatorApp(ft.Container):
         elif action == "absolute":
             value = int(self.result.value)
             value = abs(value)
+            self.result.value = str(value)
+        elif action == "sin":
+            value = float(self.result.value)
+            value = math.sin(value)
+            self.result.value = str(value)
+        elif action == "cos":
+            value = float(self.result.value)
+            value = math.cos(value)
             self.result.value = str(value)
         else:
             raise ValueError("Invalid action")
